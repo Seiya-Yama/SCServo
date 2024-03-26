@@ -66,8 +66,8 @@ public:
 	virtual int WriteMode(u8 ID);
 	virtual int WheelMode(u8 ID);//恒速模式
 	virtual int WriteSpe(u8 ID, s16 Speed, u8 ACC = 0);//恒速模式控制指令
-	virtual int WriteTorque(u8 ID, s16 Torque, u8 ACC = 0);
-	virtual void SyncWriteSpe(u8 ID[], u8 IDN, s16 Speed[], u8 ACC[]);
+	virtual int WriteTorque(u8 ID, s16 Torque, u8 ACC = 0);//トルク制御
+	virtual void SyncWriteSpe(u8 ID[], u8 IDN, s16 Speed[], u8 ACC[]);//同期速度制御
 	virtual int EnableTorque(u8 ID, u8 Enable);//扭力控制指令
 	virtual int unLockEprom(u8 ID);//eprom解锁
 	virtual int LockEprom(u8 ID);//eprom加锁
