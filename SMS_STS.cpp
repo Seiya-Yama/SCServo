@@ -160,6 +160,11 @@ void SMS_STS::SyncWriteTorque(u8 ID[], u8 IDN, s16 Torque[], u8 ACC[])
     syncWrite(ID, IDN, SMS_STS_ACC, offbuf, 7);
 }
 
+int SMS_STS::EnableTorque(u8 ID, u8 Enable)
+{
+	return writeByte(ID, SMS_STS_TORQUE_ENABLE, Enable);
+}
+
 int SMS_STS::unLockEprom(u8 ID)
 {
 	return writeByte(ID, SMS_STS_LOCK, 0);
