@@ -137,6 +137,29 @@ void SMS_STS::SyncWriteSpe(u8 ID[], u8 IDN, s16 Speed[], u8 ACC[])
     syncWrite(ID, IDN, SMS_STS_ACC, offbuf, 7);
 }
 
+void SMS_STS::SyncWriteTorque(u8 ID[], u8 IDN, s16 Torque[], u8 ACC[])
+{
+    u8 offbuf[7*IDN];
+    for(u8 i = 0; i<IDN; i++){
+        s16 T;
+        if(Torque[i]<0){
+            Torque[i] = -Torque[i];
+            Torque[i] |= (1<<15);
+            T = Torque[i];
+        }else{
+            T = Torque[i];
+        }
+        if(ACC){
+            offbuf[i*7] = ACC[i];
+        }else{
+            offbuf[i*7] = 0;
+        }
+        Host2SCS(offbuf+i*7+3, offbuf+i*7+4, T);
+        Host2SCS(offbuf+i*7+5, offbuf+i*7+6, 0);
+    }
+    syncWrite(ID, IDN, SMS_STS_ACC, offbuf, 7);
+}
+
 int SMS_STS::unLockEprom(u8 ID)
 {
 	return writeByte(ID, SMS_STS_LOCK, 0);
