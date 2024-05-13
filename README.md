@@ -4,3 +4,4 @@ SMS_STS.hの69,70行目
 70 virtual void SyncWriteSpe(u8 ID[], u8 IDN, s16 Speed[], u8 ACC[]);//同期速度制御
 
 SMS_STS.cppの対応箇所(WriteTorque,SyncWriteSpe)
+sss
