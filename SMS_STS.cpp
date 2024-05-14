@@ -104,7 +104,7 @@ int SMS_STS::WriteTorque(u8 ID, s16 Torque, u8 ACC)
 {
 	if(Torque<0){
 		Torque = -Torque;
-		Torque |= (1<<15);
+		Torque |= (1<<10);
 	}
 	u8 bBuf[2];
 	bBuf[0] = ACC;
@@ -144,7 +144,7 @@ void SMS_STS::SyncWriteTorque(u8 ID[], u8 IDN, s16 Torque[], u8 ACC[])
         s16 T;
         if(Torque[i]<0){
             Torque[i] = -Torque[i];
-            Torque[i] |= (1<<15);
+            Torque[i] |= (1<<10);
             T = Torque[i];
         }else{
             T = Torque[i];
